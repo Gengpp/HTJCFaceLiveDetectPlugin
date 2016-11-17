@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.llbt.HTJCHandle"
+        version="0.0.2">
+  <name>HTJCPlugin</name>
+  <description>活体检测JS调用原生态插件</description>
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/htjc.js" target="js/htjc.js"/>
+
+  <js-module src="www/htjc.js" name="htjc">
+    <clobbers target="htjc" />
+  </js-module>
+
+  <platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="HTJC">
+        <param name="ios-package" value="HTJCHandle" />
+      </feature>
+    </config-file>
+    <header-file src="src/ios/HTJCHandle.h" target-dir="HTJCHandlePlugin"/>
+    <source-file src="src/ios/HTJCHandle.mm" target-dir="HTJCHandlePlugin"/>
+    <framework src="src/ios/HTJCFaceBaseSdk.framework" custom="true" />
+    <framework src="src/ios/HTJCFaceLiveDetectSdk.framework" custom="true" /> 
+
+    <resource-file src="src/ios/HTJCData.bundle"/> 
+    <resource-file src="src/ios/HTJCDataBase.bundle"/>
+
+  </platform>
+</plugin>
